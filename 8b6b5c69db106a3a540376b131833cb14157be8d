@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca4118fb_dedf15df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1560543
+      },
+      "writtenOn": "2025-04-25T18:40:06Z",
+      "side": 1,
+      "message": "I can\u0027t set code-review label :( the change lgtm",
+      "revId": "8b6b5c69db106a3a540376b131833cb14157be8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
