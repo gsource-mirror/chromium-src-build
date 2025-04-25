@@ -1,4 +1,5 @@
-# UUID                  	Group Name
+# UUID                             	Group Name
 #
-mdb:copybara-git-readers	mdb/copybara-git-readers
-mdb:copybara-git-writers	mdb/copybara-git-writers
+cria:git-admin-copybara-temp-owners	cria/git-admin-copybara-temp-owners
+mdb:copybara-git-readers           	mdb/copybara-git-readers
+mdb:copybara-git-writers           	mdb/copybara-git-writers
