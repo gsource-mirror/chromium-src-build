@@ -119,20 +119,12 @@ def __step_config(ctx, step_config):
     node_js_files = [
         "third_party/devtools-frontend/src/front_end/core/i18n/collect-ui-strings.js",
         "third_party/devtools-frontend/src/front_end/core/i18n/generate-locales-js.js",
-        "third_party/devtools-frontend/src/front_end/Images/generate-css-vars.js",
-        "third_party/devtools-frontend/src/front_end/panels/timeline/enable-easter-egg.js",
         "third_party/devtools-frontend/src/node_modules/rollup/dist/bin/rollup",
         "third_party/devtools-frontend/src/scripts/build/build_ai_skills.mjs",
-        "third_party/devtools-frontend/src/scripts/build/compress_files.js",
         "third_party/devtools-frontend/src/scripts/build/esbuild.js",
         "third_party/devtools-frontend/src/scripts/build/generate_css_js_files.js",
         "third_party/devtools-frontend/src/scripts/build/generate_devtools_json.mjs",
         "third_party/devtools-frontend/src/scripts/build/generate_html_entrypoint.js",
-        "third_party/devtools-frontend/src/scripts/build/ninja/copy-file.js",
-        "third_party/devtools-frontend/src/scripts/build/ninja/copy-files.js",
-        "third_party/devtools-frontend/src/scripts/build/ninja/generate-declaration.js",
-        "third_party/devtools-frontend/src/scripts/build/ninja/generate-tsconfig.js",
-        "third_party/devtools-frontend/src/scripts/build/ninja/minify-json-files.js",
         "third_party/devtools-frontend/src/scripts/component_docs/generate_docs.mjs",
     ]
 
