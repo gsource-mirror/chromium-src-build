@@ -10,6 +10,10 @@ import("//build/config/rts.gni")
 import("//build/config/sanitizers/sanitizers.gni")
 import("//build_overrides/build.gni")
 
+if (build_with_chromium) {
+  import("//build/config/gclient_args.gni")
+}
+
 assert(
     is_android || is_robolectric,
     "current_toolchain=$current_toolchain default_toolchain=$default_toolchain")
@@ -3657,6 +3661,12 @@ if (!is_robolectric && enable_java_templates) {
                                "proguard_mapping_path",
                                "use_webview_provider",
                              ])
+      if (!defined(data)) {
+        data = []
+      }
+      if (build_with_chromium && generate_location_tags) {
+        data += [ "//testing/location_tags.json" ]
+      }
       test_name = invoker.target_name
       test_type = "instrumentation"
       apk_target = invoker.android_test_apk
