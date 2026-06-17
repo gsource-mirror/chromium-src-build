@@ -6,14 +6,9 @@
     ]
   },
   {
-    "name": "base",
+    "name": "base_content",
     "patterns": [
-      "obj/base/*"
-    ]
-  },
-  {
-    "name": "content",
-    "patterns": [
+      "obj/base/*",
       "obj/content/*"
     ]
   },
@@ -24,9 +19,21 @@
     ]
   },
   {
-    "name": "chrome",
+    "name": "chrome_java",
+    "patterns": [
+      "obj/chrome/android/chrome_java.dex.jar"
+    ]
+  },
+  {
+    "name": "chrome_rest",
     "patterns": [
       "obj/chrome/*"
+    ]
+  },
+  {
+    "name": "clank",
+    "patterns": [
+      "obj/clank/*"
     ]
   },
   {

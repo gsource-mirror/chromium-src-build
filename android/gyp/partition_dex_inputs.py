@@ -63,27 +63,33 @@ def main():
   def matches_any(path, patterns):
     return any(fnmatch.fnmatch(path, pat) for pat in patterns)
 
-  # Process non-fallback partitions
-  for partition in non_fallback_partitions:
+  matched_files = set()
+  fallback_partition = None
+  # Process non-fallback partitions first
+  for partition in partitions:
     name = partition['name']
     if name not in outputs_map:
       continue
-    filtered = [
-        path for path in all_dex_files
-        if matches_any(path, partition.get('patterns', []))
-    ]
+    if partition.get('fallback', False):
+      fallback_partition = partition
+      continue
+    filtered = []
+    for path in all_dex_files:
+      if path in matched_files:
+        continue
+      if matches_any(path, partition.get('patterns', [])):
+        filtered.append(path)
+        matched_files.add(path)
     with open(outputs_map[name], 'w', encoding='utf-8') as f:
       json.dump({'all_dex_files': filtered}, f)
 
-  # Process fallback partition
+  # Process fallback partition last
   if fallback_partition is not None:
     name = fallback_partition['name']
     if name in outputs_map:
-      filtered_fallback = [
-          path for path in all_dex_files if not matches_any(path, all_patterns)
-      ]
+      filtered = [path for path in all_dex_files if path not in matched_files]
       with open(outputs_map[name], 'w', encoding='utf-8') as f:
-        json.dump({'all_dex_files': filtered_fallback}, f)
+        json.dump({'all_dex_files': filtered}, f)
 
 
 if __name__ == '__main__':
