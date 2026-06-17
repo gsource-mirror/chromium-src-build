@@ -45,14 +45,12 @@ if (!is_win && !is_mac && !is_ios) {
     use_mold =
         # Requires a DEPS entry.
         build_with_chromium &&
-        # --ld-path is a clang-only flag.
-        is_clang &&
         # https://github.com/rui314/mold/issues/1592
         !using_sanitizer &&
         # Don't want to risk bugs for official builds.
         !is_official_build &&
-        (current_os == "android" || current_os == "linux") &&
-        # Have not tried "arm". Unlikely that non-official builds use it.
+        # TODO(40208899): Enable more broadly.
+        target_os == "android" &&
         (current_cpu == "x64" || current_cpu == "arm64" || current_cpu == "x86")
   }
 }
