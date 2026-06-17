@@ -30,7 +30,7 @@ def _SanitizeProtoTable(msg):
     return False
   for field_descriptor, field_value in msg.ListFields():
     if field_descriptor.type == field_descriptor.TYPE_MESSAGE:
-      if field_descriptor.is_repeated:
+      if field_descriptor.label == field_descriptor.LABEL_REPEATED:
         for item in field_value:
           if _SanitizeProtoTable(item):
             has_changes = True
