@@ -358,7 +358,7 @@ if (is_android) {
     enable_incremental_d8 = true
 
     # Assemble dex files in tiers to bypass D8 final merge step.
-    tiered_dex_assembly = false
+    tiered_dex_assembly = is_java_debug
 
     # Path to the JSON configuration file defining the tiered dex layers.
     # The JSON file should contain a list of objects, each representing a layer:
