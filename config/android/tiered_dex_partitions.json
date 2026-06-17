@@ -1,0 +1,36 @@
+[
+  {
+    "name": "3p",
+    "patterns": [
+      "obj/*third_party/*"
+    ]
+  },
+  {
+    "name": "base",
+    "patterns": [
+      "obj/base/*"
+    ]
+  },
+  {
+    "name": "content",
+    "patterns": [
+      "obj/content/*"
+    ]
+  },
+  {
+    "name": "components",
+    "patterns": [
+      "obj/components/*"
+    ]
+  },
+  {
+    "name": "chrome",
+    "patterns": [
+      "obj/chrome/*"
+    ]
+  },
+  {
+    "name": "other",
+    "fallback": true
+  }
+]
