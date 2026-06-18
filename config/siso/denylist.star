@@ -153,6 +153,7 @@ def __step_config(ctx, step_config):
             "name": "default",
             "action": ".*",
             "remote": True,
+            "timeout": "2m",
         })
 
     return step_config
