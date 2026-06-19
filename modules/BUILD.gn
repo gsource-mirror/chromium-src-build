@@ -278,14 +278,15 @@ if (use_unified_system_module) {
     public_deps = extra_headers
 
     defines = [ "_LIBCPP_WCHAR_H_HAS_CONST_OVERLOADS" ]
+    cflags_cc = extra_cflags
     if (is_apple) {
       # On apple platforms, _modules/_unistd.h, for example, is guarded with
       # #if __building_module(unistd).
       # This would fail for us because it's now in a mega-module called
       # "system".
       # This should *not* propagate to dependencies so it should be safe.
+      cflags_cc += [ "-Wno-builtin-macro-redefined" ]
       defines += [ "__building_module(x)=1" ]
     }
-    cflags_cc = extra_cflags
   }
 }
