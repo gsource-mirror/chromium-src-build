@@ -1584,7 +1584,9 @@ class LocalDeviceInstrumentationTestRun(
           stream_name, 'logcat', output_manager.Datatype.TEXT,
           self._test_instance.GetLogcatPackageNames()) as logcat_file:
         symbolizer = stack_symbolizer.PassThroughSymbolizerPool(
-            device.product_cpu_abi)
+            device.product_cpu_abi,
+            os.path.dirname(self._test_instance.apk_under_test.path)
+            if self._test_instance.apk_under_test else None)
         with symbolizer:
           with logcat_monitor.LogcatMonitor(
               device.adb,
