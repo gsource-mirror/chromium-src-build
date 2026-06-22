@@ -132,7 +132,6 @@ def __step_config(ctx, step_config):
         })
 
     binary_files = [
-        "character_data_generator",
         "country_native_names_generator",
         "crx3_build_action",
         "flatc",
