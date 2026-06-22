@@ -670,7 +670,9 @@ class LocalDeviceInstrumentationTestRun(
         is_desktop = dev.is_desktop or any('--force-desktop-android' in f
                                            for f in flags)
 
-        if is_desktop:
+        if not dev.IsApplicationInstalled(device_utils.GBOARD_PKG):
+          pass
+        elif is_desktop:
           logging.info('Disabling Gboard for desktop environment')
           dev.SetAppEnabled(device_utils.GBOARD_PKG, False)
           # Disable Voice IME to prevent it from appearing as fallback.
