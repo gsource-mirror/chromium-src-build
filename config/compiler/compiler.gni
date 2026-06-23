@@ -52,8 +52,8 @@ if (!is_win && !is_mac && !is_ios) {
         # Don't want to risk bugs for official builds.
         !is_official_build &&
         (current_os == "android" || current_os == "linux") &&
-        # Have not tried "arm". Unlikely that non-official builds use it.
-        (current_cpu == "x64" || current_cpu == "arm64" || current_cpu == "x86")
+        (current_cpu == "x64" || current_cpu == "arm64" ||
+         current_cpu == "x86" || current_cpu == "arm")
   }
 }
 
