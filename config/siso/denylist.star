@@ -132,7 +132,6 @@ def __step_config(ctx, step_config):
         })
 
     binary_files = [
-        "crx3_build_action",
         "flatc",
         "./v8_context_snapshot_generator",
     ]
