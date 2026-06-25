@@ -18,7 +18,7 @@ def __filegroups(ctx):
         },
         "third_party/devtools-frontend/src/node_modules:node_modules": {
             "type": "glob",
-            "includes": ["*.js", "*.json", "*.ts"],
+            "includes": ["*.cjs", "*.js", "*.json", "*.mjs", "*.ts"],
         },
     }
 
@@ -28,6 +28,9 @@ def __step_config(ctx, step_config):
             "third_party/devtools-frontend/src/node_modules/typescript:typescript",
             "third_party/devtools-frontend/src/node_modules:node_modules",
         ],
+        "third_party/devtools-frontend/src/scripts/build/generate_css_js_files.js": [
+            "third_party/devtools-frontend/src/node_modules:node_modules",
+        ],
     })
 
     step_config["rules"].extend([
@@ -35,6 +38,13 @@ def __step_config(ctx, step_config):
             "name": "devtools-frontend/typescript/ts_library",
             "command_prefix": "python3 ../../third_party/devtools-frontend/src/third_party/typescript/ts_library.py",
             "remote": False,
+            "output_local": True,
+            "timeout": "2m",
+        },
+        {
+            "name": "devtools-frontend/build/generate_css_js_files",
+            "command_prefix": "python3 ../../third_party/node/node.py ../../third_party/devtools-frontend/src/scripts/build/generate_css_js_files.js",
+            "remote": config.get(ctx, "default-remote"),
             "output_local": True,
             "timeout": "2m",
         },
