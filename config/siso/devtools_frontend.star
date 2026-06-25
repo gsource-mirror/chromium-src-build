@@ -19,7 +19,7 @@ def __filegroups(ctx):
         },
         "third_party/devtools-frontend/src/node_modules:node_modules": {
             "type": "glob",
-            "includes": ["*.cjs", "*.js", "*.json", "*.mjs", "*.ts"],
+            "includes": ["*.js", "*.json", "*.ts"],
         },
     }
 
@@ -27,9 +27,6 @@ def __step_config(ctx, step_config):
     step_config["input_deps"].update({
         "third_party/devtools-frontend/src/third_party/typescript/ts_library.py": [
             "third_party/devtools-frontend/src/node_modules/typescript:typescript",
-            "third_party/devtools-frontend/src/node_modules:node_modules",
-        ],
-        "third_party/devtools-frontend/src/scripts/build/generate_css_js_files.js": [
             "third_party/devtools-frontend/src/node_modules:node_modules",
         ],
     })
@@ -40,13 +37,6 @@ def __step_config(ctx, step_config):
             "command_prefix": "python3 ../../third_party/devtools-frontend/src/scripts/build/typescript/ts_library.py",
             # Remote execution still doesn't work when TypeScript compiler is used.
             "remote": config.get(ctx, "default-remote") and gn.args(ctx).get("devtools_skip_typecheck") != "false",
-            "output_local": True,
-            "timeout": "2m",
-        },
-        {
-            "name": "devtools-frontend/build/generate_css_js_files",
-            "command_prefix": "python3 ../../third_party/node/node.py ../../third_party/devtools-frontend/src/scripts/build/generate_css_js_files.js",
-            "remote": config.get(ctx, "default-remote"),
             "output_local": True,
             "timeout": "2m",
         },
