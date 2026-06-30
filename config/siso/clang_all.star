@@ -151,6 +151,9 @@ def __input_deps(ctx):
     }
 
 def __lld_link(ctx, cmd):
+    if not (config.get(ctx, "remote-link") or config.get(ctx, "default-remote")):
+        return
+
     # Replace thin archives with /start-lib ... /end-lib in rsp file.
     new_lines = []
     for line in str(cmd.rspfile_content).split("\n"):
